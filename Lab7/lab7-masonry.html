@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lab7: Masonry</title>
+        
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                display: flex;
+                height: 100vh;
+            }
+            #left_parent {
+                width: 70px;
+                height: 100vh;
+                flex-shrink: 0;
+                background-color: #f27324;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+            }
+            .icon-group {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 20px;
+            }
+            .icon {
+                font-size: 30px;
+                line-height: 1;
+            }
+            #right_parent {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                flex-grow: 1;
+                height: 100vh;
+                overflow-y: auto;
+                align-content: flex-start;
+                gap: 4px;
+                padding: 4px;
+            }
+            .child {
+                height: 100px;
+                flex-grow: 1;
+                object-fit: cover;
+                vertical-align: middle;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "left_parent">
+            <div class= "icon-group">
+                <div class = "icon">&#x1F4F7;</div>
+                <div class = "icon">&#x1F5C4;&#xfe0f;</div>
+                <div class = "icon">&#x2764;&#xfe0f;</div>
+            </div>
+            <div class = "icon">&#x1F5D1;&#xfe0f;</div>
+        </div>
+
+        <div id="right_parent">
+            <img class="child" src="https://picsum.photos/200/100" alt="Random Image 1">
+            <img class="child" src="https://picsum.photos/153/100" alt="Random Image 2">
+            <img class="child" src="https://picsum.photos/321/100" alt="Random Image 3">
+            <img class="child" src="https://picsum.photos/206/100" alt="Random Image 4">
+            <img class="child" src="https://picsum.photos/183/100" alt="Random Image 5">
+            <img class="child" src="https://picsum.photos/212/100" alt="Random Image 6">
+            <img class="child" src="https://picsum.photos/252/100" alt="Random Image 7">
+            <img class="child" src="https://picsum.photos/194/100" alt="Random Image 8">
+            <img class="child" src="https://picsum.photos/105/100" alt="Random Image 9">
+            <img class="child" src="https://picsum.photos/342/100" alt="Random Image 10">
+            <img class="child" src="https://picsum.photos/251/100" alt="Random Image 11">
+            <img class="child" src="https://picsum.photos/385/100" alt="Random Image 12">
+            <img class="child" src="https://picsum.photos/214/100" alt="Random Image 13">
+            <img class="child" src="https://picsum.photos/182/100" alt="Random Image 14">
+            <img class="child" src="https://picsum.photos/178/100" alt="Random Image 15">
+            <img class="child" src="https://picsum.photos/231/100" alt="Random Image 16">
+            <img class="child" src="https://picsum.photos/241/100" alt="Random Image 17">
+            <img class="child" src="https://picsum.photos/400/100" alt="Random Image 18">
+            <img class="child" src="https://picsum.photos/201/100" alt="Random Image 19">
+            <img class="child" src="https://picsum.photos/188/100" alt="Random Image 20">
+            <img class="child" src="https://picsum.photos/265/100" alt="Random Image 21">
+            <img class="child" src="https://picsum.photos/312/100" alt="Random Image 22">
+            <img class="child" src="https://picsum.photos/147/100" alt="Random Image 23">
+            <img class="child" src="https://picsum.photos/376/100" alt="Random Image 24">
+            <img class="child" src="https://picsum.photos/289/100" alt="Random Image 25">
+        </div>
+    </body>
+</html>
