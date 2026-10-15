@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 11: Mouse Events</title>
+    <style>
+    #myButton{
+      background-color: blue;
+      color: white;
+      font-size: 24px;
+      padding: 20px 40px;
+    }
+
+    #myBox{
+      width: 75vh;
+      height: 75vh;
+    }
+    </style>
+</head>
+<body>
+    <button id="myButton">Click Me! 😊</button>
+    <div id="myBox"></div>
+
+    <script>
+    const myButton = document.getElementById('myButton');
+    const myBox = document.getElementById('myBox');
+
+    function handleMouseOver(event){
+        event.target.textContent = 'Do not click! 😠';
+        event.target.style.backgroundColor = 'yellow';
+    }
+
+    function handleClick(event){
+        event.target.textContent = 'Ouch! 🤕';
+        event.target.style.backgroundColor = 'red';
+    }
+
+    function handleMouseOut(event){
+        event.target.textContent = 'Phew! 😌';
+        event.target.style.backgroundColor = 'lightgreen';
+    }
+
+    function handleDblClick(event){
+        event.target.textContent = 'Double trouble! 🤩';
+        event.target.style.backgroundColor = 'pink';
+    }
+
+    function handleMouseMove(event){
+        myButton.textContent = 'I see you! 👀';
+        myButton.style.backgroundColor = 'lightblue';
+    }
+
+    myButton.addEventListener('mouseover', handleMouseOver);
+    myButton.addEventListener('click', handleClick);
+    myButton.addEventListener('mouseout', handleMouseOut);
+    myButton.addEventListener('dblclick', handleDblClick);
+    myBox.addEventListener('mousemove', handleMouseMove);
+    </script>
+
+</body>
+</html>
