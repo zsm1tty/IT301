@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting and Calculator</title>
+</head>
+<body>
+    <form action="#">
+        <label for="userName">What is your name?</label>
+        <input type="text" id="userName">
+        <button id="greetBtn" type="button">Greet</button>
+        <p id="greeting">Hello, </p>
+
+
+        <label for="num1">First Number:</label>
+        <input type="number" id="num1"><br><br>
+
+        <label for="num2">Second Number:</label>
+        <input type="number" id="num2"><br>
+
+        <p>Select your calculation:</p>
+        <input type="radio" name="operation" id="add" value="add" checked>Addition (+)<br>
+        <input type="radio" name="operation" id="sub" value="sub">Subtraction (-)<br>
+        <input type="radio" name="operation" id="mul" value="mul">Multiplication (*)<br>
+        <input type="radio" name="operation" id="div" value="div">Division (/)<br>
+        <br>
+
+        <button id="calcBtn" type="button">Calculate</button>
+        <button id="clearBtn" type="button">Clear</button>
+
+        <p id="result"></p>
+    </form>
+
+    <script>
+        const userName = document.getElementById('userName');
+        const greeting = document.getElementById('greeting');
+        const num1 = document.getElementById('num1');
+        const num2 = document.getElementById('num2');
+        const result = document.getElementById('result');
+
+        const add = (a, b) => a + b;
+        const sub = (a, b) => a - b;
+        const mul = (a, b) => a * b;
+        const div = (a, b) => a / b;
+
+        document.getElementById('greetBtn').addEventListener('click', function(){
+            greeting.textContent = 'Hello, ' + (userName.value === '' ? 'Guest' : userName.value);
+        });
+
+        document.getElementById('calcBtn').addEventListener('click', function(){
+            const operation = document.querySelector('[name = operation]:checked');
+            const a = Number(num1.value);
+            const b = Number(num2.value);
+
+            if (operation.value === 'add') {
+                result.textContent = 'Result: ' + add(a, b);
+            } else if (operation.value === 'sub') {
+                result.textContent = 'Result: ' + sub(a, b);
+            } else if (operation.value === 'mul') {
+                result.textContent = 'Result: ' + mul(a, b);
+            } else if (operation.value === 'div') {
+                result.textContent = 'Result: ' + div(a, b);
+            }
+        });
+
+        document.getElementById('clearBtn').addEventListener('click', function(){
+            userName.value = '';
+            greeting.textContent = 'Hello, ';
+            num1.value = '';
+            num2.value = '';
+            result.textContent = '';
+            document.getElementById('add').checked = true;
+        });
+    </script>
+</body>
+</html>
