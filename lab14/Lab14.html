@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab14: API</title>
+</head>
+<body>
+    <h1>Random User Profile</h1>
+    <p>Welcome to my page for Lab 14.</p>
+
+    <script>
+        let card = document.createElement('div');
+        let img = document.createElement('img');
+        let userName = document.createElement('h2');
+        let userEmail = document.createElement('p');
+        let userPhone = document.createElement('p');
+        let form = document.createElement('form');
+        let bttn = document.createElement('button');
+
+        form.action = '#';
+        bttn.type = 'button';
+        bttn.textContent = 'Generate Profile';
+        form.appendChild(bttn);
+        document.body.appendChild(form);
+
+        const getUser = async()=>{
+        try{
+            let userData = await fetch('https://randomuser.me/api/');
+            userData = await userData.json();
+
+            let user = userData.results[0];
+
+            img.src = user.picture.large;
+            img.alt = 'user\'s profile picture';
+            userName.textContent = user.name.first + ' ' + user.name.last;
+            userEmail.textContent = 'Email: ' + user.email;
+            userPhone.textContent = 'Phone: ' + user.phone;
+
+            card.appendChild(img);
+            card.appendChild(userName);
+            card.appendChild(userEmail);
+            card.appendChild(userPhone);
+            document.body.appendChild(card);
+
+        }catch{(reason=> console.log(reason))}
+        }
+
+        bttn.addEventListener('click',getUser);
+
+    </script>
+</body>
+</html>
