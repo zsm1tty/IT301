@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab16: Forms and password real-time validation</title>
+
+    <style>
+        #passwordRules{
+            display: none;
+        }
+
+        .valid{
+            color: green;
+        }
+
+        .invalid{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Registration Form</h1>
+
+    <form id="form1">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+        <br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+        <br>
+
+        <div id="passwordRules">
+            <p id="lengthRule">At least 6 characters</p>
+            <p id="specialRule">Must include a special character (!@#$...)</p>
+            <p id="uppercaseRule">Must include an uppercase letter (A-Z)</p>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const form = document.getElementById("form1");
+
+        form.addEventListener("submit", (event) =>{
+            event.preventDefault();
+            window.location.href = "success.html";
+        });
+
+        const passwordInput = document.getElementById("password");
+        const lengthRule = document.getElementById("lengthRule");
+        const specialRule = document.getElementById("specialRule");
+        const uppercaseRule = document.getElementById("uppercaseRule");
+
+        passwordInput.addEventListener("input", () =>{
+            const password = passwordInput.value;
+
+            document.getElementById("passwordRules").style.display = password.length > 0 ? "block" : "none";
+
+            const validLength = password.length >= 6;
+            const validSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+            const validUppercase = /[A-Z]/.test(password);
+
+            lengthRule.classList.toggle("valid", validLength);
+            lengthRule.classList.toggle("invalid", !validLength);
+
+            specialRule.classList.toggle("valid", validSpecial);
+            specialRule.classList.toggle("invalid", !validSpecial);
+
+            uppercaseRule.classList.toggle("valid", validUppercase);
+            uppercaseRule.classList.toggle("invalid", !validUppercase);
+        })
+
+    </script>
+</body>
+</html>
